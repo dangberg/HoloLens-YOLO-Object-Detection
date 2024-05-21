@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/HoloLensYOLOObjectDetectionScene.unity
+    guid: 343b770c087be99448d42ff77946fb9a
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: ec1b65658ec9d1a4aa3c8ac080ed14df, type: 2}
+    com.unity.localization.settings: {fileID: 11400000, guid: b4054228e2fec8a438f7e88126ccb359, type: 2}
+    com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 150590f1d5ac3c94db32037ea6219f4e, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 1d17db1fce951224d86fd4a8c7ebf419, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 328d1c2d6b18d874fb9f364103468016, type: 2}
