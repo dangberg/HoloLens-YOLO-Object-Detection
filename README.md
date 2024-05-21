@@ -1,6 +1,3 @@
-# TODO
-- MRTK3 aus Unity Asset Store verwenden (wartet auf https://github.com/MixedRealityToolkit/MixedRealityToolkit-Unity/issues/727, sollte spätestens Ende Mai fertig sein)
-
 # 1. General
 ![Demo image](Demo.jpg)
 
