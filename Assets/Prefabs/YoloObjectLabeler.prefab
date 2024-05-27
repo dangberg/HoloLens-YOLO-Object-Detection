@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52c0e92cf055c564b829178076690741, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ModelAsset: {fileID: 5022602860645237092, guid: a5a387d2d50ca9048aeae50625aeeb18, type: 3}
+  ModelAsset: {fileID: 5022602860645237092, guid: 04aee640ee9c6654eba95775424440a5, type: 3}
   ShaderForScaling: {fileID: 2100000, guid: 6a7354e8353b6b246882424ed4486c30, type: 2}
 --- !u!114 &5104481607563202060
 MonoBehaviour:

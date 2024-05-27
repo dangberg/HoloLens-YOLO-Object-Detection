@@ -10,6 +10,9 @@ namespace Assets.Scripts
         // Resolution of the model input image.
         public static Vector2Int ModelImageResolution = new(640, 640);
 
+        // Version of the YOLO model.
+        public static YoloModelVersion ModelVersion = YoloModelVersion.V10;
+
         // Performance parameters.
         internal const int LayersHigh = 10;
         internal const int LayersLow = 5;
@@ -32,5 +35,14 @@ namespace Assets.Scripts
         internal const float MinTimesSeen = 4;
         internal const float ObjectTimeOut = 3f;
         internal const float MaxIdenticalObject = 0.4f;
+    }
+
+    /// <summary>
+    ///    Version of the YOLO model.
+    /// </summary>
+    public enum YoloModelVersion
+    {
+        V8,
+        V10
     }
 }

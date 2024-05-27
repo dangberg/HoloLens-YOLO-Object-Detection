@@ -19,6 +19,14 @@ namespace Assets.Scripts
         /// <returns>Parsed model output.</returns>
         public static List<YoloItem> ProcessModelOutput(TensorFloat tensor, float threshold)
         {
+            List<YoloItem> boxesMeetingConfidenceLevel = Parameters.ModelVersion == YoloModelVersion.V8 ?
+                ProcessModelOutputVersion8(tensor, threshold) :
+                ProcessModelOutputVersion10(tensor, threshold);
+            return FindMostLikelyObjects(boxesMeetingConfidenceLevel);
+        }
+
+        private static List<YoloItem> ProcessModelOutputVersion8(TensorFloat tensor, float threshold)
+        {
             List<YoloItem> boxesMeetingConfidenceLevel = new();
             for (int boxIndex = 0; boxIndex < tensor.shape[2]; boxIndex++)
             {
@@ -39,10 +47,30 @@ namespace Assets.Scripts
                 Vector2 center = new(tensor[0, 0, boxIndex], tensor[0, 1, boxIndex]);
                 Vector2 size = new(tensor[0, 2, boxIndex], tensor[0, 3, boxIndex]);
                 int maxIndex = classProbabilities.IndexOf(confidence);
-                boxesMeetingConfidenceLevel.Add(new YoloItem(center, size, confidence, maxIndex));
+                boxesMeetingConfidenceLevel.Add(YoloItem.FromVersion8(center, size, confidence, maxIndex));
             }
 
-            return FindMostLikelyObjects(boxesMeetingConfidenceLevel);
+            return boxesMeetingConfidenceLevel;
+        }
+
+        private static List<YoloItem> ProcessModelOutputVersion10(TensorFloat tensor, float threshold)
+        {
+            List<YoloItem> boxesMeetingConfidenceLevel = new();
+            for (int boxIndex = 0; boxIndex < tensor.shape[1]; boxIndex++)
+            {
+                float confidence = tensor[0, boxIndex, 4];
+                if (confidence < threshold)
+                {
+                    continue;
+                }
+
+                // read dimension data from tensor
+                Vector2 topLeft = new(tensor[0, boxIndex, 0], tensor[0, boxIndex, 1]);
+                Vector2 bottomRight = new(tensor[0, boxIndex, 2], tensor[0, boxIndex, 3]);
+                int classIndex = (int)tensor[0, boxIndex, 5];
+                boxesMeetingConfidenceLevel.Add(YoloItem.FromVersion10(topLeft, bottomRight, confidence, classIndex));
+            }
+            return boxesMeetingConfidenceLevel;
         }
 
         private static List<YoloItem> FindMostLikelyObjects(IEnumerable<YoloItem> boxesMeetingConfidenceLevel)

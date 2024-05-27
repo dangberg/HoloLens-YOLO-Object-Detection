@@ -1,7 +1,7 @@
 # 1. General
 ![Demo image](Demo.jpg)
 
-This Unity project is used for executing 2D image object recognition models on the HoloLens2 hardware for 3D object detection. As an example the YOLOv8n model was used (the default model is included here).
+This Unity project is used for executing 2D image object recognition models on the HoloLens2 hardware for 3D object detection. As an example the YOLOv8n and Yolov10n models were used (the default models are included here).
 The model is executed as soon as the application is started. The recognized objects are identified with a label, which displays the recognized class and the associated detection probability (as you can see in the image). This label is placed in the center of the detected object by shooting a sphere cast onto the spatial mesh of the environment.
 
 By combining the 2D position of the objects in the image with the information about the position of the camera and the spatial mesh, it is possible to estimate the position of the object in the 3D space. Therefore, the image is virtually positioned in front of the camera on a scale that is aligned with the field of view of the camera. Referring the following image you can estimate the position by casting a sphere starting in the position of camera A and going through the position of the object in image B. The point of the collision with the spatial mesh C is the estimated position of the object in the 3D space.
@@ -21,6 +21,7 @@ Various settings can be changed using the hand menu. The parameters of the progr
 
 ### Model parameters
 - `ModelImageResolution`: In this parameter the resolution of the model input image is defined. The YOLO default input size is 640 x 640.
+- `ModelVersion`: This parameter destinguishes between the used version of YOLO. Currently v8 and v10 are supported.
 - `OverlapThreshold`: Defines when two boundingboxes describe the same object (measured as IoU).
 
 ### Performance presets
@@ -58,8 +59,8 @@ The values for these parameters were determined using the debug options.
 # 3. Custom model
 
 To use your own model, the following steps must be carried out:
-1. Train your own YOLOv8n model, see https://docs.ultralytics.com/modes/train/#usage-examples
-2. Export the trained model to onnx, see https://docs.ultralytics.com/modes/export/#usage-examples
+1. Train your own [YOLOv8n](https://docs.ultralytics.com/modes/train/#usage-examples) or [YOLOv10n](https://docs.ultralytics.com/models/yolov10/#usage-examples) model
+2. Export the trained model to onnx, see [Yolov8](https://docs.ultralytics.com/modes/export/#usage-examples) / [Yolov10](https://github.com/THU-MIG/yolov10#Export)
 3. Copy the trained model to the `Assets/Models` folder
 4. Update the linked model in the `YoloObjectLabeler` prefab or directly in the scene
 5. Update the detected classes in the `ObjectClass` script
