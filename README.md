@@ -1,7 +1,7 @@
 # 1. General
 ![Demo image](Demo.jpg)
 
-This Unity project is used for executing 2D image object recognition models on the HoloLens2 hardware for 3D object detection. As an example the YOLOv8n and Yolov10n models were used (the default models are included here).
+This Unity project is used for executing 2D image object recognition models on the HoloLens2 hardware using the Unity Framework Sentis. As an example the YOLOv8n and Yolov10n models were used (the default models are included here).
 The model is executed as soon as the application is started. The recognized objects are identified with a label, which displays the recognized class and the associated detection probability (as you can see in the image). This label is placed in the center of the detected object by shooting a sphere cast onto the spatial mesh of the environment.
 
 By combining the 2D position of the objects in the image with the information about the position of the camera and the spatial mesh, it is possible to estimate the position of the object in the 3D space. Therefore, the image is virtually positioned in front of the camera on a scale that is aligned with the field of view of the camera. Referring the following image you can estimate the position by casting a sphere starting in the position of camera A and going through the position of the object in image B. The point of the collision with the spatial mesh C is the estimated position of the object in the 3D space.
