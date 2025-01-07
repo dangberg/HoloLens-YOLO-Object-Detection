@@ -671,11 +671,11 @@ PlayerSettings:
   m_MobileRenderingPath: 1
   metroPackageName: HoloLensYOLOObjectDetection
   metroPackageVersion: 1.0.0.0
-  metroCertificatePath: Assets\WSATestCertificate.pfx
+  metroCertificatePath: Assets/WSATestCertificate.pfx
   metroCertificatePassword: 
   metroCertificateSubject: DefaultCompany
   metroCertificateIssuer: DefaultCompany
-  metroCertificateNotAfter: 80edaaf498beda01
+  metroCertificateNotAfter: 00dc7ad4b27fdc01
   metroApplicationDescription: HoloLensYOLOObjectDetection
   wsaImages: {}
   metroTileShortName: Prototype
